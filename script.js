@@ -48,14 +48,31 @@ function drawStars() {
   animationFrame = requestAnimationFrame(drawStars);
 }
 
-const spawnerToggle = document.getElementById('spawner-toggle');
-const spawnerMenu = document.getElementById('spawner-menu');
+const tabs = document.querySelectorAll('.menu-tab');
+const panels = document.querySelectorAll('.tab-panel');
 
-if (spawnerToggle && spawnerMenu) {
-  spawnerToggle.addEventListener('click', () => {
-    spawnerMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const targetId = tab.dataset.tabTarget;
+
+    tabs.forEach((button) => {
+      const active = button === tab;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
+
+    panels.forEach((panel) => {
+      const active = panel.id === targetId;
+      panel.classList.toggle('is-active', active);
+      panel.hidden = !active;
+    });
+
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
-}
+});
 
 setupCanvas();
 drawStars();
