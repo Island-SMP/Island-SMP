@@ -21,13 +21,20 @@
 
     <div class="page-shell">
       <header class="hero">
-        <div class="menu-tabs">
-          <div class="menu-badge">Main Menu</div>
+        <div class="menu-tabs" aria-label="Main navigation">
           <button
-            id="spawner-toggle"
-            class="menu-badge menu-badge-spawners"
             type="button"
-            aria-controls="spawner-menu"
+            class="menu-badge menu-tab is-active"
+            data-tab-target="main-menu"
+            aria-selected="true"
+          >
+            Main Menu
+          </button>
+          <button
+            type="button"
+            class="menu-badge menu-badge-spawners menu-tab"
+            data-tab-target="spawner-menu"
+            aria-selected="false"
           >
             Spawners
           </button>
@@ -39,31 +46,42 @@
       </header>
 
       <main class="content">
-        <section class="photo-panel">
-          <img src="IMG_0863.jpeg" alt="IslandSMP server scenery" />
+        <section id="main-menu" class="tab-panel is-active">
+          <section class="photo-panel">
+            <img src="IMG_0863.jpeg" alt="IslandSMP server scenery" />
+          </section>
+
+          <section class="info-card">
+            <h2>What is IslandSMP?</h2>
+            <p>
+              IslandSMP is a fun and friendly Public Minecraft Survival Server.
+            </p>
+          </section>
+
+          <section class="info-card join-card">
+            <h2>How do I join IslandSMP?</h2>
+            <p>
+              If you want to join IslandSMP, on Java click <strong>"Add Server"</strong>,
+              then for the IP type <strong>IslandSMP.apexmc.co</strong>.
+            </p>
+            <p>
+              For Bedrock, click <strong>"Add Server"</strong>, then type for the IP
+              <strong>IslandSMP.apexmc.co</strong> and for the port type
+              <strong>25756</strong>.
+            </p>
+          </section>
+
+          <section class="info-card">
+            <h2>How do I check my money?</h2>
+            <p>
+              To check your money, type <strong>/Bal</strong> or <strong>/Baltop</strong>.
+              You can also type <strong>/Shop</strong> and look for the sunflower icon to
+              see your balance.
+            </p>
+          </section>
         </section>
 
-        <section class="info-card">
-          <h2>What is IslandSMP?</h2>
-          <p>
-            IslandSMP is a fun and friendly Public Minecraft Survival Server.
-          </p>
-        </section>
-
-        <section class="info-card join-card">
-          <h2>How do I join IslandSMP?</h2>
-          <p>
-            If you want to join IslandSMP, on Java click <strong>"Add Server"</strong>,
-            then for the IP type <strong>IslandSMP.apexmc.co</strong>.
-          </p>
-          <p>
-            For Bedrock, click <strong>"Add Server"</strong>, then type for the IP
-            <strong>IslandSMP.apexmc.co</strong> and for the port type
-            <strong>25756</strong>.
-          </p>
-        </section>
-
-        <section id="spawner-menu" class="info-card spawner-menu">
+        <section id="spawner-menu" class="tab-panel info-card spawner-menu">
           <h2>Spawners</h2>
 
           <div class="spawner-list">
