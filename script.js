@@ -78,7 +78,7 @@ async function fetchServerStatus() {
     }
   }
 
-  onlineEl.textContent = '0';
+  onlineEl.textContent = '?';
   maxEl.textContent = '100';
 }
 
