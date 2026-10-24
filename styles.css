@@ -8,6 +8,13 @@
   --text: #eafef4;
   --muted: #bfd8d5;
   --shadow: rgba(140, 255, 126, 0.55);
+  --gold: #f4d98d;
+  --purple: #c79dff;
+  --pink: #ff8ae8;
+  --blue: #7ec9ff;
+  --dark-red: #ff6b7d;
+  --green: #7ad98f;
+  --orange: #ffb347;
 }
 
 * {
@@ -196,16 +203,19 @@ strong {
   font-weight: 700;
 }
 
-.spawner-menu {
+.spawner-menu,
+.crate-menu {
   scroll-margin-top: 32px;
 }
 
-.spawner-list {
+.spawner-list,
+.crate-list {
   display: grid;
   gap: 12px;
 }
 
-.spawner-list p {
+.spawner-list p,
+.crate-list p {
   margin: 0;
   line-height: 1.8;
   color: var(--muted);
@@ -230,8 +240,56 @@ strong {
 .chance.enderman { color: #b99eff; }
 
 .drop {
-  color: #f4d98d;
+  color: var(--gold);
   font-weight: 700;
+}
+
+.crate-name {
+  color: var(--lime-soft);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.crate-key {
+  color: var(--purple);
+  font-weight: 800;
+}
+
+.crate-rates {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.crate-rates li {
+  line-height: 1.7;
+  list-style: disc;
+}
+
+.crate-item {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.crate-item:nth-child(odd) {
+  color: var(--orange);
+}
+
+.crate-percent {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.crate-percent.rare {
+  color: var(--pink);
+  text-shadow: 0 0 10px rgba(255, 138, 232, 0.4);
+}
+
+.crate-rare {
+  color: var(--pink);
+  font-weight: 800;
 }
 
 @media (max-width: 640px) {
