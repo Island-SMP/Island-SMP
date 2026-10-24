@@ -52,15 +52,9 @@ const spawnerToggle = document.getElementById('spawner-toggle');
 const spawnerMenu = document.getElementById('spawner-menu');
 
 if (spawnerToggle && spawnerMenu) {
-  const showSpawnerSection = () => {
-    spawnerMenu.hidden = false;
-    spawnerToggle.classList.add('is-active');
-    spawnerToggle.setAttribute('aria-expanded', 'true');
+  spawnerToggle.addEventListener('click', () => {
     spawnerMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#spawner-menu');
-  };
-
-  spawnerToggle.addEventListener('click', showSpawnerSection);
+  });
 }
 
 setupCanvas();
