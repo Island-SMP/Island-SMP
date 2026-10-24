@@ -56,13 +56,17 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   margin-bottom: 18px;
 }
 
 .menu-badge {
-  display: inline-block;
-  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  margin: 0;
   padding: 10px 18px;
   border: 1px solid rgba(140, 255, 126, 0.4);
   border-radius: 999px;
@@ -78,24 +82,19 @@ body {
 
 .menu-badge-spawners {
   cursor: pointer;
-  border: 1px solid rgba(140, 255, 126, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  background: rgba(11, 30, 18, 0.45);
-  color: var(--lime-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .menu-badge-spawners:hover,
 .menu-badge-spawners:focus-visible {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 0 22px rgba(128, 255, 163, 0.22);
   border-color: rgba(140, 255, 126, 0.7);
   outline: none;
 }
 
-.menu-badge-spawners.is-active {
-  background: rgba(29, 59, 41, 0.7);
-  border-color: rgba(180, 255, 190, 0.8);
-  color: #d9ffdf;
+.menu-badge-spawners:active {
+  transform: translateY(0);
 }
 
 .hero h1 {
@@ -154,6 +153,9 @@ body {
 }
 
 .info-card {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
   padding: 28px 28px 26px;
   border-radius: 22px;
 }
@@ -183,11 +185,7 @@ strong {
 }
 
 .spawner-menu {
-  display: block;
-}
-
-.spawner-menu[hidden] {
-  display: none;
+  scroll-margin-top: 32px;
 }
 
 .spawner-list {
@@ -243,6 +241,7 @@ strong {
   }
 
   .menu-badge {
+    min-width: 120px;
     letter-spacing: 0.12em;
     padding: 9px 14px;
   }
