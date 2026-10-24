@@ -59,6 +59,25 @@
         <h1>IslandSMP</h1>
         <p class="server-ip">IP: <span>IslandSMP.apexmc.co</span></p>
         <p class="server-port">Bedrock Port: <span>25756</span></p>
+
+        <div class="server-status reveal">
+          <div class="status-header">
+            <span class="status-dot"></span>
+            <span class="status-label">Live</span>
+          </div>
+
+          <div class="status-row">
+            <span class="status-emoji">🟢</span>
+            <span class="status-text">Players</span>
+            <span class="status-count" id="server-online">?</span>
+            <span class="status-divider">/</span>
+            <span class="status-max" id="server-max">100</span>
+          </div>
+
+          <div class="status-bar" aria-label="Player count">
+            <span class="status-fill" id="server-progress"></span>
+          </div>
+        </div>
       </header>
 
       <main class="content">
@@ -231,5 +250,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-
