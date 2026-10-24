@@ -21,7 +21,14 @@
 
     <div class="page-shell">
       <header class="hero">
-        <div class="menu-badge">Main Menu</div>
+        <div class="menu-tabs">
+          <div class="menu-badge">Main Menu</div>
+          <div class="menu-badge menu-badge-spawners">
+            <img src="Spawner.png" alt="Spawner icon" class="menu-icon" />
+            <span>Spawners</span>
+          </div>
+        </div>
+
         <h1>IslandSMP</h1>
         <p class="server-ip">IP: <span>IslandSMP.apexmc.co</span></p>
         <p class="server-port">Bedrock Port: <span>25756</span></p>
@@ -52,109 +59,71 @@
           </p>
         </section>
 
-        <section class="spawner-section">
-          <div class="section-heading">
-            <span class="section-kicker">Next Menu</span>
-            <h2>Spawner Drops</h2>
-          </div>
+        <section class="info-card spawner-menu">
+          <h2>Spawners</h2>
 
-          <div class="spawner-grid">
-            <article class="spawner-card pig-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag pig">Pig</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="pig-text">Pig</span> Spawner has a <strong>70%</strong>
-                chance to generate <span class="highlight">Pork Chops</span> to eat or sell.
-              </p>
-            </article>
+          <div class="spawner-list">
+            <p>
+              <span class="mob-name pig">Pig Spawner:</span> The
+              <span class="mob-name pig">Pig Spawner</span> has a
+              <span class="chance pig">70%</span> chance to generate
+              <span class="drop">Pork Chops</span> to eat or sell.
+            </p>
 
-            <article class="spawner-card bat-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag bat">Bat</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="bat-text">Bat</span> Spawner has an <strong>85%</strong>
-                chance to generate <span class="highlight">Spider Eyes</span> to sell.
-              </p>
-            </article>
+            <p>
+              <span class="mob-name bat">Bat Spawner:</span> The
+              <span class="mob-name bat">Bat Spawner</span> has an
+              <span class="chance bat">85%</span> chance to generate
+              <span class="drop">Spider Eyes</span> to sell.
+            </p>
 
-            <article class="spawner-card spider-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag spider">Spider</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="spider-text">Spider</span> Spawner has a <strong>58%</strong>
-                chance to generate <span class="highlight">Spider Eyes</span> and an
-                <strong>88%</strong> chance to generate
-                <span class="highlight">String</span> to craft or sell.
-              </p>
-            </article>
+            <p>
+              <span class="mob-name spider">Spider Spawner:</span> The
+              <span class="mob-name spider">Spider Spawner</span> has a
+              <span class="chance spider">58%</span> chance to generate
+              <span class="drop">Spider Eyes</span> and an
+              <span class="chance spider">88%</span> chance to generate
+              <span class="drop">String</span> to craft or sell.
+            </p>
 
-            <article class="spawner-card zombie-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag zombie">Zombie</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="zombie-text">Zombie</span> Spawner has a <strong>66%</strong>
-                chance to generate <span class="highlight">Rotten Flesh</span>, a <strong>1%</strong>
-                chance for <span class="highlight">Iron Ingots</span>, a <strong>24%</strong>
-                chance for <span class="highlight">Carrots</span>, a <strong>6%</strong>
-                chance for <span class="highlight">Potatoes</span>, and a <strong>45%</strong>
-                chance for <span class="highlight">Golden Ingots</span>. There is also a
-                <strong>0.1%</strong> chance to drop a
-                <span class="highlight">Zombie Head</span>.
-              </p>
-            </article>
+            <p>
+              <span class="mob-name zombie">Zombie Spawner:</span> The
+              <span class="mob-name zombie">Zombie Spawner</span> has a
+              <span class="chance zombie">66%</span> chance to generate
+              <span class="drop">Rotten Flesh</span>, a
+              <span class="chance zombie">1%</span> chance to generate
+              <span class="drop">Iron Ingots</span>, a
+              <span class="chance zombie">24%</span> chance to generate
+              <span class="drop">Carrots</span>, a
+              <span class="chance zombie">6%</span> chance to generate
+              <span class="drop">Potatoes</span>, and a
+              <span class="chance zombie">45%</span> chance to generate
+              <span class="drop">Golden Ingots</span>. There is also a
+              <span class="chance zombie">0.1%</span> chance to generate a
+              <span class="drop">Zombie Head</span>.
+            </p>
 
-            <article class="spawner-card skeleton-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag skeleton">Skeleton</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="skeleton-text">Skeleton</span> Spawner has a <strong>79%</strong>
-                chance to generate a <span class="highlight">Bone</span>, a <strong>72%</strong>
-                chance to generate an <span class="highlight">Arrow</span>, an <strong>18%</strong>
-                chance to generate a <span class="highlight">Bow</span>, and a <strong>0.1%</strong>
-                chance to generate a <span class="highlight">Skeleton Skull</span>.
-              </p>
-            </article>
+            <p>
+              <span class="mob-name skeleton">Skeleton Spawner:</span> The
+              <span class="mob-name skeleton">Skeleton Spawner</span> has a
+              <span class="chance skeleton">79%</span> chance to generate a
+              <span class="drop">Bone</span>, a
+              <span class="chance skeleton">72%</span> chance to generate an
+              <span class="drop">Arrow</span>, an
+              <span class="chance skeleton">18%</span> chance to generate a
+              <span class="drop">Bow</span>, and a
+              <span class="chance skeleton">0.1%</span> chance to generate a
+              <span class="drop">Skeleton Skull</span>.
+            </p>
 
-            <article class="spawner-card enderman-card">
-              <div class="spawner-header">
-                <img src="Spawner.png" alt="Spawner icon" class="spawner-icon" />
-                <div class="spawner-title">
-                  <span class="mob-tag enderman">Enderman</span>
-                  <span class="mob-type">Spawner</span>
-                </div>
-              </div>
-              <p>
-                The <span class="enderman-text">Enderman</span> Spawner has a <strong>65%</strong>
-                chance to generate an <span class="highlight">Ender Pearl</span> and an
-                <strong>80%</strong> chance to generate
-                <span class="highlight">End Stone</span>.
-              </p>
-            </article>
+            <p>
+              <span class="mob-name enderman">Enderman Spawner:</span> The
+              <span class="mob-name enderman">Enderman Spawner</span> has a
+              <span class="chance enderman">65%</span> chance to generate an
+              <span class="drop">Ender Pearl</span> and an
+              <span class="chance enderman">80%</span> chance to generate
+              <span class="drop">End Stone</span>.
+            </p>
           </div>
         </section>
       </main>
