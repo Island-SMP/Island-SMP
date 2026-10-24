@@ -63,18 +63,18 @@
 
       <main class="content">
         <section id="main-menu" class="tab-panel is-active">
-          <section class="photo-panel">
+          <section class="photo-panel reveal">
             <img src="IMG_0863.jpeg" alt="IslandSMP server scenery" />
           </section>
 
-          <section class="info-card">
+          <section class="info-card reveal">
             <h2>What is IslandSMP?</h2>
             <p>
               IslandSMP is a fun and friendly Public Minecraft Survival Server.
             </p>
           </section>
 
-          <section class="info-card join-card">
+          <section class="info-card join-card reveal">
             <h2>How do I join IslandSMP?</h2>
             <p>
               If you want to join IslandSMP, on Java click <strong>"Add Server"</strong>,
@@ -87,7 +87,7 @@
             </p>
           </section>
 
-          <section class="info-card">
+          <section class="info-card reveal">
             <h2>How do I check my money?</h2>
             <p>
               To check your money, type <strong>/Bal</strong> or <strong>/Baltop</strong>.
@@ -101,7 +101,7 @@
           </section>
         </section>
 
-        <section id="spawner-menu" class="tab-panel info-card spawner-menu">
+        <section id="spawner-menu" class="tab-panel info-card spawner-menu reveal">
           <h2>Spawners</h2>
 
           <div class="spawner-list">
@@ -169,17 +169,22 @@
           </div>
         </section>
 
-        <section id="crates-menu" class="tab-panel info-card crate-menu">
+        <section id="crates-menu" class="tab-panel info-card crate-menu reveal">
           <h2>Crates</h2>
 
           <div class="crate-list">
-            <p class="crate-intro">
+            <p class="crate-intro reveal">
               <span class="crate-name">Ender Crate.</span> The
               <span class="crate-name">Ender crate</span> is a special crate you can only open with
               <span class="crate-key">Keys of Ender</span>. The chances are:
             </p>
 
-            <ul class="crate-rates">
+            <div class="crate-visual reveal">
+              <img src="EnderCrate.jpeg" alt="Ender Crate preview" />
+              <span class="crate-visual-caption">Stats of the Ender Crate</span>
+            </div>
+
+            <ul class="crate-rates reveal">
               <li><span class="crate-item">Ender Pearl</span> <span class="crate-percent">15%</span> chance</li>
               <li><span class="crate-item">End Stone</span> x5 <span class="crate-percent">15%</span> chance</li>
               <li><span class="crate-item">End Stone Bricks</span> x5 <span class="crate-percent">15%</span> chance</li>
@@ -194,7 +199,7 @@
               <li><span class="crate-item legendary">Ender Sword</span> <span class="crate-percent">1%</span> chance</li>
             </ul>
 
-            <p class="crate-final">
+            <p class="crate-final reveal">
               Finally, the rarest item you can get is an
               <span class="crate-rare">Enderman Spawner</span> with a
               <span class="crate-percent rare">0.63%</span> chance.
@@ -202,11 +207,11 @@
           </div>
         </section>
 
-        <section id="tutorials-menu" class="tab-panel info-card tutorial-menu">
+        <section id="tutorials-menu" class="tab-panel info-card tutorial-menu reveal">
           <h2>Tutorials</h2>
 
           <div class="tutorial-grid">
-            <article class="tutorial-card">
+            <article class="tutorial-card reveal">
               <h3>Getting Started on IslandSMP</h3>
               <div class="video-wrap">
                 <iframe
@@ -226,4 +231,5 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 

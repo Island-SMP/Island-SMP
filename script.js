@@ -51,21 +51,40 @@ function drawStars() {
 const tabs = document.querySelectorAll('.menu-tab');
 const panels = document.querySelectorAll('.tab-panel');
 
+const revealItems = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+revealItems.forEach((item) => revealObserver.observe(item));
+
+function activateTab(targetId) {
+  tabs.forEach((button) => {
+    const active = button.dataset.tabTarget === targetId;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+
+  panels.forEach((panel) => {
+    const active = panel.id === targetId;
+    panel.classList.toggle('is-active', active);
+    panel.hidden = !active;
+    panel.style.animation = active ? 'panelFade 0.5s ease' : '';
+  });
+}
+
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     const targetId = tab.dataset.tabTarget;
-
-    tabs.forEach((button) => {
-      const active = button === tab;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-selected', String(active));
-    });
-
-    panels.forEach((panel) => {
-      const active = panel.id === targetId;
-      panel.classList.toggle('is-active', active);
-      panel.hidden = !active;
-    });
+    activateTab(targetId);
 
     const target = document.getElementById(targetId);
     if (target) {
