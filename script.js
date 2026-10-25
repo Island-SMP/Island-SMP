@@ -47,39 +47,26 @@ const onlineEl = document.getElementById('server-online');
 const maxEl = document.getElementById('server-max');
 
 async function fetchServerStatus() {
-  const endpoints = [
-    'https://api.mcstatus.io/v2/status/java/islandsmp.apexmc.co',
-    'https://mcstatus.io/status/java/islandsmp.apexmc.co'
-  ];
-
-  for (const url of endpoints) {
-    try {
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json'
-        },
-        mode: 'cors'
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+  try {
+    const response = await fetch('https://api.mcstatus.io/v2/status/java/islandsmp.apexmc.co', {
+      headers: {
+        Accept: 'application/json'
       }
+    });
 
-      const data = await response.json();
-      const online = Number(data?.players?.online ?? data?.players?.current ?? 0);
-      const max = Number(data?.players?.max ?? 100);
+    if (!response.ok) throw new Error('Status API unavailable');
 
-      onlineEl.textContent = String(online);
-      maxEl.textContent = String(max);
-      return;
-    } catch (error) {
-      continue;
-    }
+    const data = await response.json();
+    const online = Number(data?.players?.online ?? 0);
+    const max = Number(data?.players?.max ?? 100);
+
+    onlineEl.textContent = String(online);
+    maxEl.textContent = String(max);
+    return;
+  } catch (error) {
+    onlineEl.textContent = '?';
+    maxEl.textContent = '100';
   }
-
-  onlineEl.textContent = '?';
-  maxEl.textContent = '100';
 }
 
 fetchServerStatus();
