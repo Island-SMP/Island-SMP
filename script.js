@@ -52,14 +52,24 @@ const playerPopupNameEl = document.getElementById('player-popup-name');
 const playerPopupAvatarEl = document.getElementById('player-popup-avatar');
 
 const avatarMap = {
-  '.LizzieBear9331': 'Lizzie.jpeg',
-  'TheWardenEd': 'Steve.jpeg',
+  '.lizziebear9331': 'Lizzie.jpeg',
+  'lizziebear9331': 'Lizzie.jpeg',
+  'thewardened': 'Steve.jpeg',
   '.fsal2062': 'Pumpkin.jpeg',
+  'fsal2062': 'Pumpkin.jpeg',
   'u1ven_': 'TechnoBlade.jpeg',
+  '.u1ven_': 'TechnoBlade.jpeg',
 };
 
 function normalizeName(value) {
   return String(value ?? '').trim();
+}
+
+function normalizePlayerKey(value) {
+  return normalizeName(value)
+    .replace(/§[0-9A-FK-ORa-fk-or]/g, '')
+    .replace(/[^a-zA-Z0-9_.-]/g, '')
+    .toLowerCase();
 }
 
 function getPlayerName(player) {
@@ -71,7 +81,7 @@ function getPlayerName(player) {
 function showPlayerPopup(name) {
   if (!playerPopupEl || !playerPopupNameEl || !playerPopupAvatarEl) return;
 
-  const avatar = avatarMap[name] || 'BedrockSteve.jpeg';
+  const avatar = avatarMap[normalizePlayerKey(name)] || 'BedrockSteve.jpeg';
   playerPopupNameEl.textContent = name;
   playerPopupAvatarEl.src = avatar;
   playerPopupAvatarEl.alt = `${name} avatar`;
@@ -89,7 +99,8 @@ function renderPlayers(players) {
       const name = getPlayerName(player);
       if (!name) return null;
 
-      const avatar = avatarMap[name] || 'BedrockSteve.jpeg';
+      const normalizedKey = normalizePlayerKey(name);
+      const avatar = avatarMap[normalizedKey] || 'BedrockSteve.jpeg';
       return { name, avatar };
     })
     .filter(Boolean);
@@ -114,7 +125,7 @@ function renderPlayers(players) {
 
   onlinePlayerCountEl.textContent = String(visiblePlayers.length);
 
-  const warden = visiblePlayers.find((player) => player.name === 'TheWardenEd');
+  const warden = visiblePlayers.find((player) => normalizePlayerKey(player.name) === 'thewardened');
   if (warden) {
     showPlayerPopup(warden.name);
   } else {
