@@ -45,13 +45,55 @@ tabs.forEach((tab) => {
 
 const onlineEl = document.getElementById('server-online');
 const maxEl = document.getElementById('server-max');
+const onlinePlayerListEl = document.getElementById('online-player-list');
+const onlinePlayerCountEl = document.getElementById('online-player-count');
+
+const avatarMap = {
+  '.SOCCERMAN2487': 'BedrockSteve.jpeg',
+  'TheWardenEd': 'Steve.jpeg',
+  '.fsal2062': 'Pumpkin.jpeg',
+};
+
+function normalizeName(value) {
+  return String(value ?? '').trim();
+}
+
+function renderPlayers(players) {
+  const visiblePlayers = players
+    .map((player) => {
+      const name = normalizeName(player?.name ?? player?.username ?? player);
+      const avatar = avatarMap[name];
+      if (!avatar) return null;
+      return { name, avatar };
+    })
+    .filter(Boolean);
+
+  if (!visiblePlayers.length) {
+    onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
+    onlinePlayerCountEl.textContent = '0';
+    return;
+  }
+
+  onlinePlayerListEl.innerHTML = visiblePlayers
+    .map(
+      (player) => `
+        <li>
+          <img class="online-player-avatar" src="${player.avatar}" alt="${player.name} avatar" />
+          <span class="online-player-name">${player.name}</span>
+        </li>
+      `
+    )
+    .join('');
+
+  onlinePlayerCountEl.textContent = String(visiblePlayers.length);
+}
 
 async function fetchServerStatus() {
   try {
     const response = await fetch('https://api.mcstatus.io/v2/status/java/islandsmp.apexmc.co', {
       headers: {
-        Accept: 'application/json'
-      }
+        Accept: 'application/json',
+      },
     });
 
     if (!response.ok) throw new Error('Status API unavailable');
@@ -60,54 +102,22 @@ async function fetchServerStatus() {
     const online = Number(data?.players?.online ?? 0);
     const max = Number(data?.players?.max ?? 100);
 
-    onlineEl.textContent = String(online);
-    maxEl.textContent = String(max);
+    if (onlineEl) onlineEl.textContent = String(online);
+    if (maxEl) maxEl.textContent = String(max);
+
+    const playersList = Array.isArray(data?.players?.list) ? data.players.list : [];
+    renderPlayers(playersList);
     return;
   } catch (error) {
-    onlineEl.textContent = '?';
-    maxEl.textContent = '100';
+    if (onlineEl) onlineEl.textContent = '?';
+    if (maxEl) maxEl.textContent = '100';
+    onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
+    onlinePlayerCountEl.textContent = '0';
   }
 }
 
 fetchServerStatus();
 setInterval(fetchServerStatus, 30000);
-
-const playerListEl = document.getElementById('player-list');
-const playerCountBadge = document.getElementById('player-count-badge');
-const playersToggle = document.querySelector('.players-toggle');
-const playersPanel = document.getElementById('online-players-panel');
-const playersClose = document.querySelector('.players-panel-close');
-
-const onlinePlayers = [
-  { name: '.SOCCERMAN2487', avatar: 'BedrockSteve.jpeg' },
-  { name: 'TheWardenEd', avatar: 'Steve.jpeg' },
-  { name: '.fsal2062', avatar: 'Pumpkin.jpeg' }
-];
-
-function renderPlayers() {
-  playerListEl.innerHTML = onlinePlayers
-    .map((player) => `
-      <li>
-        <img class="player-avatar" src="${player.avatar}" alt="${player.name} avatar" />
-        <span class="player-name">${player.name}</span>
-      </li>
-    `)
-    .join('');
-
-  playerCountBadge.textContent = String(onlinePlayers.length);
-}
-
-function togglePlayerPanel(forceOpen) {
-  const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !playersPanel.classList.contains('is-open');
-  playersPanel.classList.toggle('is-open', shouldOpen);
-  playersToggle.setAttribute('aria-expanded', String(shouldOpen));
-  playersPanel.setAttribute('aria-hidden', String(!shouldOpen));
-}
-
-playersToggle.addEventListener('click', () => togglePlayerPanel());
-playersClose.addEventListener('click', () => togglePlayerPanel(false));
-
-renderPlayers();
 
 const canvas = document.getElementById('stars');
 const context = canvas.getContext('2d');
