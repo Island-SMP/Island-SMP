@@ -72,6 +72,43 @@ async function fetchServerStatus() {
 fetchServerStatus();
 setInterval(fetchServerStatus, 30000);
 
+const playerListEl = document.getElementById('player-list');
+const playerCountBadge = document.getElementById('player-count-badge');
+const playersToggle = document.querySelector('.players-toggle');
+const playersPanel = document.getElementById('online-players-panel');
+const playersClose = document.querySelector('.players-panel-close');
+
+const onlinePlayers = [
+  { name: '.SOCCERMAN2487', avatar: 'BedrockSteve.jpeg' },
+  { name: 'TheWardenEd', avatar: 'Steve.jpeg' },
+  { name: '.fsal2062', avatar: 'Pumpkin.jpeg' }
+];
+
+function renderPlayers() {
+  playerListEl.innerHTML = onlinePlayers
+    .map((player) => `
+      <li>
+        <img class="player-avatar" src="${player.avatar}" alt="${player.name} avatar" />
+        <span class="player-name">${player.name}</span>
+      </li>
+    `)
+    .join('');
+
+  playerCountBadge.textContent = String(onlinePlayers.length);
+}
+
+function togglePlayerPanel(forceOpen) {
+  const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !playersPanel.classList.contains('is-open');
+  playersPanel.classList.toggle('is-open', shouldOpen);
+  playersToggle.setAttribute('aria-expanded', String(shouldOpen));
+  playersPanel.setAttribute('aria-hidden', String(!shouldOpen));
+}
+
+playersToggle.addEventListener('click', () => togglePlayerPanel());
+playersClose.addEventListener('click', () => togglePlayerPanel(false));
+
+renderPlayers();
+
 const canvas = document.getElementById('stars');
 const context = canvas.getContext('2d');
 
