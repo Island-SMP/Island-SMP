@@ -537,6 +537,48 @@ strong {
   letter-spacing: 0.02em;
 }
 
+.player-popup {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.player-popup.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.player-popup-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(140, 255, 126, 0.5);
+  border-radius: 18px;
+  background: rgba(7, 18, 20, 0.92);
+  box-shadow: 0 0 26px rgba(140, 255, 126, 0.2);
+}
+
+.player-popup-card img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(140, 255, 126, 0.4);
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.player-popup-card span {
+  color: var(--lime-soft);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
 @keyframes heroFloat {
   0% { transform: translateY(0); }
   100% { transform: translateY(-4px); }

@@ -62,6 +62,14 @@
           >
             News
           </button>
+          <button
+            type="button"
+            class="menu-badge menu-tab"
+            data-tab-target="online-players-menu"
+            aria-selected="false"
+          >
+            Online Players
+          </button>
         </div>
 
         <h1>IslandSMP</h1>
@@ -174,7 +182,7 @@
 
             <p>
               <span class="mob-name enderman">Enderman Spawner:</span> The
-              <span class="mob-name enderman">Enderman Spawner</span> has a
+              <span class="mob-name enderman">Enderman Spawner</span> has an
               <span class="chance enderman">65%</span> chance to generate an
               <span class="drop">Ender Pearl</span> and an
               <span class="chance enderman">80%</span> chance to generate
@@ -286,7 +294,25 @@
             <span class="crate-visual-caption">NetherCrate Release</span>
           </div>
         </section>
+
+        <section id="online-players-menu" class="tab-panel info-card online-players-menu reveal">
+          <div class="online-players-header">
+            <h2>Online Players</h2>
+            <span class="online-player-count" id="online-player-count">0</span>
+          </div>
+
+          <ul id="online-player-list" class="online-player-list" aria-live="polite">
+            <li class="empty-state">Loading players...</li>
+          </ul>
+        </section>
       </main>
+    </div>
+
+    <div id="player-popup" class="player-popup" aria-live="polite">
+      <div class="player-popup-card">
+        <img id="player-popup-avatar" src="Steve.jpeg" alt="Online player avatar" />
+        <span id="player-popup-name">TheWardenEd</span>
+      </div>
     </div>
 
     <script src="script.js"></script>

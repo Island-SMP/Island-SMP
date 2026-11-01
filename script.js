@@ -47,23 +47,40 @@ const onlineEl = document.getElementById('server-online');
 const maxEl = document.getElementById('server-max');
 const onlinePlayerListEl = document.getElementById('online-player-list');
 const onlinePlayerCountEl = document.getElementById('online-player-count');
+const playerPopupEl = document.getElementById('player-popup');
+const playerPopupNameEl = document.getElementById('player-popup-name');
+const playerPopupAvatarEl = document.getElementById('player-popup-avatar');
 
 const avatarMap = {
-  '.SOCCERMAN2487': 'BedrockSteve.jpeg',
-  'TheWardenEd': 'Steve.jpeg',
-  '.fsal2062': 'Pumpkin.jpeg',
+  TheWardenEd: 'Steve.jpeg',
 };
 
 function normalizeName(value) {
   return String(value ?? '').trim();
 }
 
+function showPlayerPopup(name) {
+  if (!playerPopupEl || !playerPopupNameEl || !playerPopupAvatarEl) return;
+
+  const avatar = avatarMap[name] || 'BedrockSteve.jpeg';
+  playerPopupNameEl.textContent = name;
+  playerPopupAvatarEl.src = avatar;
+  playerPopupAvatarEl.alt = `${name} avatar`;
+  playerPopupEl.classList.add('is-visible');
+}
+
+function hidePlayerPopup() {
+  if (!playerPopupEl) return;
+  playerPopupEl.classList.remove('is-visible');
+}
+
 function renderPlayers(players) {
   const visiblePlayers = players
     .map((player) => {
       const name = normalizeName(player?.name ?? player?.username ?? player);
-      const avatar = avatarMap[name];
-      if (!avatar) return null;
+      if (!name) return null;
+
+      const avatar = avatarMap[name] || 'BedrockSteve.jpeg';
       return { name, avatar };
     })
     .filter(Boolean);
@@ -71,6 +88,7 @@ function renderPlayers(players) {
   if (!visiblePlayers.length) {
     onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
     onlinePlayerCountEl.textContent = '0';
+    hidePlayerPopup();
     return;
   }
 
@@ -86,6 +104,13 @@ function renderPlayers(players) {
     .join('');
 
   onlinePlayerCountEl.textContent = String(visiblePlayers.length);
+
+  const warden = visiblePlayers.find((player) => player.name === 'TheWardenEd');
+  if (warden) {
+    showPlayerPopup(warden.name);
+  } else {
+    hidePlayerPopup();
+  }
 }
 
 async function fetchServerStatus() {
@@ -113,6 +138,7 @@ async function fetchServerStatus() {
     if (maxEl) maxEl.textContent = '100';
     onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
     onlinePlayerCountEl.textContent = '0';
+    hidePlayerPopup();
   }
 }
 
