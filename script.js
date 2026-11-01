@@ -125,7 +125,10 @@ function renderPlayers(players) {
 
   onlinePlayerCountEl.textContent = String(visiblePlayers.length);
 
-  const warden = visiblePlayers.find((player) => normalizePlayerKey(player.name) === 'thewardened');
+  const warden = visiblePlayers.find(
+    (player) => normalizePlayerKey(player.name) === 'thewardened'
+  );
+
   if (warden) {
     showPlayerPopup(warden.name);
   } else {
