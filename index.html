@@ -62,6 +62,14 @@
           >
             News
           </button>
+          <button
+            type="button"
+            class="menu-badge menu-tab"
+            data-tab-target="online-players-menu"
+            aria-selected="false"
+          >
+            Online Players
+          </button>
         </div>
 
         <h1>IslandSMP</h1>
@@ -286,30 +294,17 @@
             <span class="crate-visual-caption">NetherCrate Release</span>
           </div>
         </section>
+
+        <section id="online-players-menu" class="tab-panel info-card online-players-menu reveal">
+          <div class="online-players-header">
+            <h2>Online Players</h2>
+            <span id="online-player-count" class="online-player-count">0</span>
+          </div>
+
+          <ul id="online-player-list" class="online-player-list" aria-live="polite"></ul>
+        </section>
       </main>
     </div>
-
-    <div class="players-tab-wrap">
-      <button
-        type="button"
-        class="players-toggle"
-        aria-controls="online-players-panel"
-        aria-expanded="false"
-      >
-        View Online Players
-      </button>
-    </div>
-
-    <aside id="online-players-panel" class="players-panel" aria-hidden="true">
-      <div class="players-panel-header">
-        <button type="button" class="players-panel-close" aria-label="Close online player list">
-          Back
-        </button>
-        <div class="players-panel-title">Online Players</div>
-        <span id="player-count-badge" class="player-count-badge">0</span>
-      </div>
-      <ul id="player-list" class="player-list" aria-live="polite"></ul>
-    </aside>
 
     <script src="script.js"></script>
   </body>
