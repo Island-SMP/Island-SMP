@@ -289,6 +289,28 @@
       </main>
     </div>
 
+    <div class="players-tab-wrap">
+      <button
+        type="button"
+        class="players-toggle"
+        aria-controls="online-players-panel"
+        aria-expanded="false"
+      >
+        View Online Players
+      </button>
+    </div>
+
+    <aside id="online-players-panel" class="players-panel" aria-hidden="true">
+      <div class="players-panel-header">
+        <button type="button" class="players-panel-close" aria-label="Close online player list">
+          Back
+        </button>
+        <div class="players-panel-title">Online Players</div>
+        <span id="player-count-badge" class="player-count-badge">0</span>
+      </div>
+      <ul id="player-list" class="player-list" aria-live="polite"></ul>
+    </aside>
+
     <script src="script.js"></script>
   </body>
 </html>
