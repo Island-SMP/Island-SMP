@@ -59,6 +59,10 @@ const avatarMap = {
   'fsal2062': 'Pumpkin.jpeg',
   'u1ven_': 'TechnoBlade.jpeg',
   '.u1ven_': 'TechnoBlade.jpeg',
+  '.supertommy6395': 'Portal.jpeg',
+  'supertommy6395': 'Portal.jpeg',
+  '.supertomm6395': 'Portal.jpeg',
+  'supertomm6395': 'Portal.jpeg',
 };
 
 function normalizeName(value) {
