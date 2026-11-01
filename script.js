@@ -59,6 +59,12 @@ function normalizeName(value) {
   return String(value ?? '').trim();
 }
 
+function getPlayerName(player) {
+  return normalizeName(
+    player?.name_clean ?? player?.name_raw ?? player?.name ?? player?.username ?? player
+  );
+}
+
 function showPlayerPopup(name) {
   if (!playerPopupEl || !playerPopupNameEl || !playerPopupAvatarEl) return;
 
@@ -77,7 +83,7 @@ function hidePlayerPopup() {
 function renderPlayers(players) {
   const visiblePlayers = players
     .map((player) => {
-      const name = normalizeName(player?.name ?? player?.username ?? player);
+      const name = getPlayerName(player);
       if (!name) return null;
 
       const avatar = avatarMap[name] || 'BedrockSteve.jpeg';
