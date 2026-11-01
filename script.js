@@ -47,9 +47,6 @@ const onlineEl = document.getElementById('server-online');
 const maxEl = document.getElementById('server-max');
 const onlinePlayerListEl = document.getElementById('online-player-list');
 const onlinePlayerCountEl = document.getElementById('online-player-count');
-const playerPopupEl = document.getElementById('player-popup');
-const playerPopupNameEl = document.getElementById('player-popup-name');
-const playerPopupAvatarEl = document.getElementById('player-popup-avatar');
 
 const avatarMap = {
   '.lizziebear9331': 'Lizzie.jpeg',
@@ -82,21 +79,6 @@ function getPlayerName(player) {
   );
 }
 
-function showPlayerPopup(name) {
-  if (!playerPopupEl || !playerPopupNameEl || !playerPopupAvatarEl) return;
-
-  const avatar = avatarMap[normalizePlayerKey(name)] || 'BedrockSteve.jpeg';
-  playerPopupNameEl.textContent = name;
-  playerPopupAvatarEl.src = avatar;
-  playerPopupAvatarEl.alt = `${name} avatar`;
-  playerPopupEl.classList.add('is-visible');
-}
-
-function hidePlayerPopup() {
-  if (!playerPopupEl) return;
-  playerPopupEl.classList.remove('is-visible');
-}
-
 function renderPlayers(players) {
   const visiblePlayers = players
     .map((player) => {
@@ -112,7 +94,6 @@ function renderPlayers(players) {
   if (!visiblePlayers.length) {
     onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
     onlinePlayerCountEl.textContent = '0';
-    hidePlayerPopup();
     return;
   }
 
@@ -128,16 +109,6 @@ function renderPlayers(players) {
     .join('');
 
   onlinePlayerCountEl.textContent = String(visiblePlayers.length);
-
-  const warden = visiblePlayers.find(
-    (player) => normalizePlayerKey(player.name) === 'thewardened'
-  );
-
-  if (warden) {
-    showPlayerPopup(warden.name);
-  } else {
-    hidePlayerPopup();
-  }
 }
 
 async function fetchServerStatus() {
@@ -165,7 +136,6 @@ async function fetchServerStatus() {
     if (maxEl) maxEl.textContent = '100';
     onlinePlayerListEl.innerHTML = '<li class="empty-state">No players online</li>';
     onlinePlayerCountEl.textContent = '0';
-    hidePlayerPopup();
   }
 }
 
