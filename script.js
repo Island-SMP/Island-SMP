@@ -52,7 +52,10 @@ const playerPopupNameEl = document.getElementById('player-popup-name');
 const playerPopupAvatarEl = document.getElementById('player-popup-avatar');
 
 const avatarMap = {
-  TheWardenEd: 'Steve.jpeg',
+  '.LizzieBear9331': 'Lizzie.jpeg',
+  'TheWardenEd': 'Steve.jpeg',
+  '.fsal2062': 'Pumpkin.jpeg',
+  'u1ven_': 'TechnoBlade.jpeg',
 };
 
 function normalizeName(value) {
