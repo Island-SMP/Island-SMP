@@ -49,17 +49,8 @@ const onlinePlayerListEl = document.getElementById('online-player-list');
 const onlinePlayerCountEl = document.getElementById('online-player-count');
 
 const avatarMap = {
-  '.lizziebear9331': 'Lizzie.jpeg',
-  'lizziebear9331': 'Lizzie.jpeg',
   'thewardened': 'Steve.jpeg',
-  '.fsal2062': 'Pumpkin.jpeg',
-  'fsal2062': 'Pumpkin.jpeg',
-  'u1ven_': 'TechnoBlade.jpeg',
-  '.u1ven_': 'TechnoBlade.jpeg',
-  '.supertommy6395': 'Portal.jpeg',
-  'supertommy6395': 'Portal.jpeg',
-  '.supertomm6395': 'Portal.jpeg',
-  'supertomm6395': 'Portal.jpeg',
+  '.thewardened': 'Steve.jpeg',
 };
 
 function normalizeName(value) {
@@ -86,7 +77,7 @@ function renderPlayers(players) {
       if (!name) return null;
 
       const normalizedKey = normalizePlayerKey(name);
-      const avatar = avatarMap[normalizedKey] || 'BedrockSteve.jpeg';
+      const avatar = avatarMap[normalizedKey] || 'SteveBedrock.jpeg';
       return { name, avatar };
     })
     .filter(Boolean);
