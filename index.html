@@ -15,6 +15,106 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .appeal-menu {
+        scroll-margin-top: 32px;
+        text-align: center;
+        isolation: isolate;
+      }
+
+      .appeal-menu::before {
+        content: "✦";
+        position: absolute;
+        z-index: -1;
+        top: -70px;
+        right: 7%;
+        color: rgba(140, 255, 126, 0.1);
+        font-size: 15rem;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .appeal-eyebrow {
+        display: inline-flex;
+        margin: 0 0 14px;
+        padding: 7px 12px;
+        border: 1px solid rgba(140, 255, 126, 0.38);
+        border-radius: 999px;
+        background: rgba(140, 255, 126, 0.08);
+        color: var(--lime-soft);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .appeal-menu h2 {
+        margin-bottom: 12px;
+      }
+
+      .appeal-description {
+        max-width: 620px;
+        margin: 0 auto !important;
+      }
+
+      .appeal-note {
+        display: inline-block;
+        margin: 20px 0 24px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: rgba(126, 201, 255, 0.08);
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .appeal-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 13px 24px;
+        border: 1px solid rgba(140, 255, 126, 0.75);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(48, 102, 52, 0.95), rgba(15, 54, 44, 0.95));
+        box-shadow: 0 0 24px rgba(140, 255, 126, 0.2), inset 0 0 14px rgba(140, 255, 126, 0.08);
+        color: var(--text);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .appeal-action:hover,
+      .appeal-action:focus-visible {
+        transform: translateY(-3px);
+        border-color: var(--lime-soft);
+        box-shadow: 0 0 32px rgba(140, 255, 126, 0.34), 0 0 44px rgba(126, 201, 255, 0.12);
+        outline: none;
+      }
+
+      .appeal-action:focus-visible {
+        outline: 2px solid var(--lime-soft);
+        outline-offset: 4px;
+      }
+
+      .appeal-action span {
+        font-size: 1.2rem;
+        transition: transform 0.22s ease;
+      }
+
+      .appeal-action:hover span {
+        transform: translate(3px, -3px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .appeal-action,
+        .appeal-action span {
+          transition: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <canvas id="stars"></canvas>
@@ -61,6 +161,14 @@
             aria-selected="false"
           >
             News
+          </button>
+          <button
+            type="button"
+            class="menu-badge menu-tab"
+            data-tab-target="appeal-menu"
+            aria-selected="false"
+          >
+            Appeals
           </button>
           <button
             type="button"
@@ -292,6 +400,26 @@
           <div class="crate-visual reveal">
             <img src="NetherCrate.jpeg" alt="Nether Crate news image" />
             <span class="crate-visual-caption">NetherCrate Release</span>
+          </div>
+        </section>
+
+        <section id="appeal-menu" class="tab-panel info-card appeal-menu reveal">
+          <span class="appeal-eyebrow">Need a second chance?</span>
+          <h2>Submit an Appeal</h2>
+          <p class="appeal-description">
+            Think a server decision needs another look? Send our team an appeal and
+            we’ll review it as soon as we can.
+          </p>
+          <p class="appeal-note">Please share the details honestly and respectfully so we can help.</p>
+          <div>
+            <a
+              class="appeal-action"
+              href="https://forms.gle/5SbzxefUqU6TPzy36"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Appeal Form <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
 
