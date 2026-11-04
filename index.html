@@ -68,11 +68,19 @@
         line-height: 1.6;
       }
 
+      .appeal-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
       .appeal-action {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
+        min-width: 220px;
         min-height: 52px;
         padding: 13px 24px;
         border: 1px solid rgba(140, 255, 126, 0.75);
@@ -106,6 +114,16 @@
 
       .appeal-action:hover span {
         transform: translate(3px, -3px);
+      }
+
+      @media (max-width: 480px) {
+        .appeal-actions {
+          flex-direction: column;
+        }
+
+        .appeal-action {
+          width: 100%;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -170,14 +188,6 @@
           >
             Appeals
           </button>
-          <button
-            type="button"
-            class="menu-badge menu-tab"
-            data-tab-target="online-players-menu"
-            aria-selected="false"
-          >
-            Online Players
-          </button>
         </div>
 
         <h1>IslandSMP</h1>
@@ -229,6 +239,17 @@
               🟢 Players <span id="server-online">?</span>/<span id="server-max">100</span>
             </p>
           </div>
+
+          <section id="online-players-menu" class="info-card online-players-menu reveal">
+            <div class="online-players-header">
+              <h2>Players Online</h2>
+              <span class="online-player-count" id="online-player-count">0</span>
+            </div>
+
+            <ul id="online-player-list" class="online-player-list" aria-live="polite">
+              <li class="empty-state">Loading players...</li>
+            </ul>
+          </section>
         </section>
 
         <section id="spawner-menu" class="tab-panel info-card spawner-menu reveal">
@@ -333,10 +354,10 @@
               <li><span class="crate-item">Ender Chest</span> <span class="crate-percent">13%</span> chance</li>
               <li><span class="crate-item">End Rod</span> <span class="crate-percent">12%</span> chance</li>
               <li><span class="crate-item">Eye of Ender</span> <span class="crate-percent">10%</span> chance</li>
-              <li><span class="crate-item rare">Ender Helmet</span> <span class="crate-percent">2%</span> chance</li>
+              <li><span class="crate-item rare">Ender Helmet</span> <span class="crate-percent rare">2%</span> chance</li>
               <li><span class="crate-item epic">Ender Chestplate</span> <span class="crate-percent">1%</span> chance</li>
               <li><span class="crate-item epic">Ender Leggings</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item rare">Ender Boots</span> <span class="crate-percent">2%</span> chance</li>
+              <li><span class="crate-item rare">Ender Boots</span> <span class="crate-percent rare">2%</span> chance</li>
               <li><span class="crate-item legendary">Ender Sword</span> <span class="crate-percent">1%</span> chance</li>
             </ul>
 
@@ -363,10 +384,10 @@
               <li><span class="crate-item">Obsidian</span> <span class="crate-percent">12%</span> chance</li>
               <li><span class="crate-item">Magma Cream</span> <span class="crate-percent">11%</span> chance</li>
               <li><span class="crate-item">Blaze Rod</span> <span class="crate-percent">10%</span> chance</li>
-              <li><span class="crate-item rare">Nether Helmet</span> <span class="crate-percent">2%</span> chance</li>
+              <li><span class="crate-item rare">Nether Helmet</span> <span class="crate-percent rare">2%</span> chance</li>
               <li><span class="crate-item epic">Nether Chestplate</span> <span class="crate-percent">1%</span> chance</li>
               <li><span class="crate-item epic">Nether Leggings</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item rare">Nether Boots</span> <span class="crate-percent">2%</span> chance</li>
+              <li><span class="crate-item rare">Nether Boots</span> <span class="crate-percent rare">2%</span> chance</li>
               <li><span class="crate-item legendary">Piglin Spawner</span> <span class="crate-percent rare">0.44%</span> chance</li>
             </ul>
           </div>
@@ -411,27 +432,24 @@
             we’ll review it as soon as we can.
           </p>
           <p class="appeal-note">Please share the details honestly and respectfully so we can help.</p>
-          <div>
+          <div class="appeal-actions">
             <a
               class="appeal-action"
               href="https://forms.gle/5SbzxefUqU6TPzy36"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open Appeal Form <span aria-hidden="true">↗</span>
+              Submit an Appeal <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              class="appeal-action"
+              href="https://forms.gle/bSvvWPpjdyHGsxaE8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Report a Player <span aria-hidden="true">↗</span>
             </a>
           </div>
-        </section>
-
-        <section id="online-players-menu" class="tab-panel info-card online-players-menu reveal">
-          <div class="online-players-header">
-            <h2>Online Players</h2>
-            <span class="online-player-count" id="online-player-count">0</span>
-          </div>
-
-          <ul id="online-player-list" class="online-player-list" aria-live="polite">
-            <li class="empty-state">Loading players...</li>
-          </ul>
         </section>
       </main>
     </div>
