@@ -1,3 +1,31 @@
+const mainMenu = document.getElementById('main-menu');
+const menuTabs = document.querySelector('.menu-tabs');
+const content = document.querySelector('.content');
+
+const storeTab = document.createElement('button');
+storeTab.type = 'button';
+storeTab.className = 'menu-badge menu-tab';
+storeTab.dataset.tabTarget = 'store-menu';
+storeTab.setAttribute('aria-selected', 'false');
+storeTab.textContent = 'Store';
+const mainMenuTab = menuTabs?.querySelector('[data-tab-target="main-menu"]');
+if (mainMenuTab) mainMenuTab.insertAdjacentElement('afterend', storeTab);
+
+const storePanel = document.createElement('section');
+storePanel.id = 'store-menu';
+storePanel.className = 'tab-panel info-card store-menu reveal';
+storePanel.hidden = true;
+storePanel.innerHTML = `
+  <h2>Visit Our Store</h2>
+  <p>Do you want to visit our store?</p>
+  <div class="appeal-actions">
+    <a class="appeal-action" href="https://islandsmpmc.craftingstore.net" target="_blank" rel="noopener noreferrer">
+      Visit Store <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+`;
+if (mainMenu && content) mainMenu.insertAdjacentElement('afterend', storePanel);
+
 const tabs = document.querySelectorAll('.menu-tab');
 const panels = document.querySelectorAll('.tab-panel');
 
