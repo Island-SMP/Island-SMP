@@ -81,6 +81,11 @@ const avatarMap = {
   '.thewardened': 'Steve.jpeg',
 };
 
+const playerRoleMap = {
+  thewardeneds: { label: '[Owner]', className: 'owner' },
+  '.soccerman2487': { label: '[VIP]', className: 'vip' },
+};
+
 function normalizeName(value) {
   return String(value ?? '').trim();
 }
@@ -90,6 +95,16 @@ function normalizePlayerKey(value) {
     .replace(/§[0-9A-FK-ORa-fk-or]/g, '')
     .replace(/[^a-zA-Z0-9_.-]/g, '')
     .toLowerCase();
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  })[character]);
 }
 
 function getPlayerName(player) {
@@ -106,7 +121,8 @@ function renderPlayers(players) {
 
       const normalizedKey = normalizePlayerKey(name);
       const avatar = avatarMap[normalizedKey] || 'SteveBedrock.jpeg';
-      return { name, avatar };
+      const role = playerRoleMap[normalizedKey] || null;
+      return { name, avatar, role };
     })
     .filter(Boolean);
 
@@ -120,8 +136,11 @@ function renderPlayers(players) {
     .map(
       (player) => `
         <li>
-          <img class="online-player-avatar" src="${player.avatar}" alt="${player.name} avatar" />
-          <span class="online-player-name">${player.name}</span>
+          <img class="online-player-avatar" src="${player.avatar}" alt="${escapeHTML(player.name)} avatar" />
+          <span class="online-player-identity">
+            <span class="online-player-name${player.role ? ` ${player.role.className}` : ''}">${escapeHTML(player.name)}</span>
+            ${player.role ? `<span class="online-player-tag ${player.role.className}">${player.role.label}</span>` : ''}
+          </span>
         </li>
       `
     )

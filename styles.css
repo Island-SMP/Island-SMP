@@ -530,11 +530,34 @@ strong {
   background: rgba(255, 255, 255, 0.04);
 }
 
+.online-player-identity {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .online-player-name {
   color: var(--text);
   font-size: 1.02rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.online-player-name.owner,
+.online-player-tag.owner {
+  color: #8b0000;
+}
+
+.online-player-name.vip,
+.online-player-tag.vip {
+  color: #00ff00;
+}
+
+.online-player-tag {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .player-popup {
