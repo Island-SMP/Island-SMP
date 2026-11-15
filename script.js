@@ -82,8 +82,14 @@ const avatarMap = {
 };
 
 const playerRoleMap = {
-  thewardeneds: { label: '[Owner]', className: 'owner' },
-  '.soccerman2487': { label: '[VIP]', className: 'vip' },
+  thewardened: { label: '[Owner]', className: 'owner' },
+  '.soccerman2487': { label: '[MVP Cyan]', className: 'mvp-cyan', style: 'color: #00ffff;' },
+  '.dinnerbone75705': { label: '[MVP Cyan]', className: 'mvp-cyan', style: 'color: #00ffff;' },
+  muddinboo: {
+    label: '[Elite]',
+    className: 'rainbow',
+    style: 'background: linear-gradient(90deg, #ff0000, #ff9900, #ffff00, #00cc00, #00ccff, #3333ff, #9900cc); background-clip: text; -webkit-background-clip: text; color: transparent;',
+  },
 };
 
 function normalizeName(value) {
@@ -138,8 +144,8 @@ function renderPlayers(players) {
         <li>
           <img class="online-player-avatar" src="${player.avatar}" alt="${escapeHTML(player.name)} avatar" />
           <span class="online-player-identity">
-            <span class="online-player-name${player.role ? ` ${player.role.className}` : ''}">${escapeHTML(player.name)}</span>
-            ${player.role ? `<span class="online-player-tag ${player.role.className}">${player.role.label}</span>` : ''}
+            <span class="online-player-name${player.role ? ` ${player.role.className}` : ''}"${player.role?.style ? ` style="${player.role.style}"` : ''}>${escapeHTML(player.name)}</span>
+            ${player.role ? `<span class="online-player-tag ${player.role.className}"${player.role.style ? ` style="${player.role.style}"` : ''}>${player.role.label}</span>` : ''}
           </span>
         </li>
       `
