@@ -48,9 +48,7 @@
         text-transform: uppercase;
       }
 
-      .appeal-menu h2 {
-        margin-bottom: 12px;
-      }
+      .appeal-menu h2 { margin-bottom: 12px; }
 
       .appeal-description {
         max-width: 620px;
@@ -112,25 +110,57 @@
         transition: transform 0.22s ease;
       }
 
-      .appeal-action:hover span {
-        transform: translate(3px, -3px);
+      .appeal-action:hover span { transform: translate(3px, -3px); }
+
+      .news-update {
+        margin-top: 18px;
+        padding: 18px;
+        border: 1px solid rgba(140, 255, 126, 0.24);
+        border-radius: 16px;
+        background: rgba(7, 18, 20, 0.55);
+      }
+
+      .news-update-latest {
+        border-color: rgba(140, 255, 126, 0.52);
+        box-shadow: 0 0 22px rgba(140, 255, 126, 0.10);
+      }
+
+      .news-update h3 { margin: 8px 0 4px; }
+
+      .news-latest-badge {
+        display: inline-flex;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: rgba(140, 255, 126, 0.12);
+        color: var(--lime-soft);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .news-date {
+        margin: 0 0 10px !important;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .news-features {
+        margin: 8px 0 0;
+        padding-left: 20px;
+        display: grid;
+        gap: 7px;
+        color: var(--muted);
       }
 
       @media (max-width: 480px) {
-        .appeal-actions {
-          flex-direction: column;
-        }
-
-        .appeal-action {
-          width: 100%;
-        }
+        .appeal-actions { flex-direction: column; }
+        .appeal-action { width: 100%; }
       }
 
       @media (prefers-reduced-motion: reduce) {
         .appeal-action,
-        .appeal-action span {
-          transition: none;
-        }
+        .appeal-action span { transition: none; }
       }
     </style>
   </head>
@@ -155,102 +185,51 @@
 
       <main class="content">
         <section id="main-menu" class="tab-panel is-active">
-          <section class="photo-panel reveal">
-            <img src="IMG_0863.jpeg" alt="IslandSMP server scenery" />
-          </section>
-
+          <section class="photo-panel reveal"><img src="IMG_0863.jpeg" alt="IslandSMP server scenery" /></section>
           <section class="info-card reveal">
             <h2>What is IslandSMP?</h2>
             <p>IslandSMP is a fun and friendly Public Minecraft Survival Server.</p>
           </section>
-
           <section class="info-card join-card reveal">
             <h2>How do I join IslandSMP?</h2>
             <p>If you want to join IslandSMP on Java, click <strong>"Add Server"</strong>, then type <strong>IslandSMP.apexmc.co</strong> for the IP.</p>
             <p>For Bedrock, click <strong>"Add Server"</strong>, then type for the IP <strong>IslandSMP.apexmc.co</strong> and for the port type <strong>25756</strong>.</p>
           </section>
-
           <section class="info-card reveal">
             <h2>How do I check my money?</h2>
             <p>To check your money, type <strong>/Bal</strong> or <strong>/Baltop</strong>. You can also type <strong>/Shop</strong> and look for the sunflower icon to see your balance.</p>
             <p>You can also type <strong>/balance</strong> or <strong>/balancetop</strong> to check your money!</p>
           </section>
-
-          <div class="server-status reveal">
-            <p class="server-status-title">🟢 Players <span id="server-online">?</span>/<span id="server-max">100</span></p>
-          </div>
-
+          <div class="server-status reveal"><p class="server-status-title">🟢 Players <span id="server-online">?</span>/<span id="server-max">100</span></p></div>
           <section id="online-players-menu" class="info-card online-players-menu reveal">
-            <div class="online-players-header">
-              <h2>Players Online</h2>
-              <span class="online-player-count" id="online-player-count">0</span>
-            </div>
-            <ul id="online-player-list" class="online-player-list" aria-live="polite">
-              <li class="empty-state">Loading players...</li>
-            </ul>
+            <div class="online-players-header"><h2>Players Online</h2><span class="online-player-count" id="online-player-count">0</span></div>
+            <ul id="online-player-list" class="online-player-list" aria-live="polite"><li class="empty-state">Loading players...</li></ul>
           </section>
         </section>
 
         <section id="spawner-menu" class="tab-panel info-card spawner-menu reveal">
           <h2>Spawners</h2>
           <div class="spawner-list">
-            <p><span class="mob-name pig">Pig Spawner:</span> The <span class="mob-name pig">Pig Spawner</span> has a <span class="chance pig">70%</span> chance to generate <span class="drop">Pork Chops</span> to eat or sell.</p>
-            <p><span class="mob-name bat">Bat Spawner:</span> The <span class="mob-name bat">Bat Spawner</span> has an <span class="chance bat">85%</span> chance to generate <span class="drop">Spider Eyes</span> to sell.</p>
-            <p><span class="mob-name spider">Spider Spawner:</span> The <span class="mob-name spider">Spider Spawner</span> has a <span class="chance spider">58%</span> chance to generate <span class="drop">Spider Eyes</span> and an <span class="chance spider">88%</span> chance to generate <span class="drop">String</span> to craft or sell.</p>
-            <p><span class="mob-name zombie">Zombie Spawner:</span> The <span class="mob-name zombie">Zombie Spawner</span> has a <span class="chance zombie">66%</span> chance to generate <span class="drop">Rotten Flesh</span>, a <span class="chance zombie">1%</span> chance to generate <span class="drop">Iron Ingots</span>, a <span class="chance zombie">24%</span> chance to generate <span class="drop">Carrots</span>, a <span class="chance zombie">6%</span> chance to generate <span class="drop">Potatoes</span>, and a <span class="chance zombie">45%</span> chance to generate <span class="drop">Golden Ingots</span>. There is also a <span class="chance zombie">0.1%</span> chance to generate a <span class="drop">Zombie Head</span>.</p>
-            <p><span class="mob-name skeleton">Skeleton Spawner:</span> The <span class="mob-name skeleton">Skeleton Spawner</span> has a <span class="chance skeleton">79%</span> chance to generate a <span class="drop">Bone</span>, a <span class="chance skeleton">72%</span> chance to generate an <span class="drop">Arrow</span>, an <span class="chance skeleton">18%</span> chance to generate a <span class="drop">Bow</span>, and a <span class="chance skeleton">0.1%</span> chance to generate a <span class="drop">Skeleton Skull</span>.</p>
-            <p><span class="mob-name enderman">Enderman Spawner:</span> The <span class="mob-name enderman">Enderman Spawner</span> has an <span class="chance enderman">65%</span> chance to generate an <span class="drop">Ender Pearl</span> and an <span class="chance enderman">80%</span> chance to generate <span class="drop">End Stone</span>.</p>
-            <p><span class="mob-name enderman">Piglin Spawner:</span> The <span class="mob-name enderman">Piglin Spawner</span> has an <span class="chance enderman">8%</span> chance to generate a <span class="drop">Golden Sword</span>, an <span class="chance enderman">8%</span> chance to generate a <span class="drop">Crossbow</span>, and a <span class="chance enderman">70%</span> chance to generate <span class="drop">Gold Ingots</span>.</p>
+            <p><span class="mob-name pig">Pig Spawner:</span> The <span class="mob-name pig">Pig Spawner</span> has a <span class="chance pig">70%</span> chance to generate <span class="drop">Porkchops</span>.</p>
+            <p><span class="mob-name bat">Bat Spawner:</span> The <span class="mob-name bat">Bat Spawner</span> has an <span class="chance bat">85%</span> chance to generate <span class="drop">Leather</span>.</p>
+            <p><span class="mob-name spider">Spider Spawner:</span> The <span class="mob-name spider">Spider Spawner</span> has a <span class="chance spider">58%</span> chance to generate <span class="drop">Cobwebs</span>.</p>
+            <p><span class="mob-name zombie">Zombie Spawner:</span> The <span class="mob-name zombie">Zombie Spawner</span> has a <span class="chance zombie">66%</span> chance to generate <span class="drop">Rotten Flesh</span>.</p>
+            <p><span class="mob-name skeleton">Skeleton Spawner:</span> The <span class="mob-name skeleton">Skeleton Spawner</span> has a <span class="chance skeleton">79%</span> chance to generate <span class="drop">Bones</span>.</p>
+            <p><span class="mob-name enderman">Enderman Spawner:</span> The <span class="mob-name enderman">Enderman Spawner</span> has an <span class="chance enderman">65%</span> chance to generate <span class="drop">Ender Pearls</span>.</p>
+            <p><span class="mob-name enderman">Piglin Spawner:</span> The updated <span class="mob-name enderman">Piglin Spawner</span> is available in the shop and has an <span class="chance enderman">8%</span> chance to generate <span class="drop">Gold Ingots</span>, plus a <span class="chance enderman">0.1%</span> chance to generate a <span class="drop">Piglin Head</span>.</p>
+            <p><span class="mob-name spider">Creeper Spawner:</span> The <span class="mob-name spider">Creeper Spawner</span> is now available.</p>
           </div>
         </section>
 
         <section id="crates-menu" class="tab-panel info-card crate-menu reveal">
           <h2>Crates</h2>
-          <div class="crate-list">
-            <p class="crate-intro reveal"><span class="crate-name">Ender Crate</span>. The <span class="crate-name">Ender crate</span> is a special crate you can only open with <span class="crate-key">Keys of Ender</span>. The chances are:</p>
-            <div class="crate-visual reveal"><img src="EnderCrate.jpeg" alt="Ender Crate preview" /><span class="crate-visual-caption">Stats of the Ender Crate</span></div>
-            <ul class="crate-rates reveal">
-              <li><span class="crate-item">Ender Pearl</span> <span class="crate-percent">15%</span> chance</li>
-              <li><span class="crate-item">End Stone</span> x5 <span class="crate-percent">15%</span> chance</li>
-              <li><span class="crate-item">End Stone Bricks</span> x5 <span class="crate-percent">15%</span> chance</li>
-              <li><span class="crate-item">Obsidian</span> x5 <span class="crate-percent">14%</span> chance</li>
-              <li><span class="crate-item">Ender Chest</span> <span class="crate-percent">13%</span> chance</li>
-              <li><span class="crate-item">End Rod</span> <span class="crate-percent">12%</span> chance</li>
-              <li><span class="crate-item">Eye of Ender</span> <span class="crate-percent">10%</span> chance</li>
-              <li><span class="crate-item rare">Ender Helmet</span> <span class="crate-percent">2%</span> chance</li>
-              <li><span class="crate-item epic">Ender Chestplate</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item epic">Ender Leggings</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item rare">Ender Boots</span> <span class="crate-percent">2%</span> chance</li>
-              <li><span class="crate-item legendary">Ender Sword</span> <span class="crate-percent">1%</span> chance</li>
-            </ul>
-            <p class="crate-final reveal">Finally, the rarest item you can get is an <span class="crate-rare">Enderman Spawner</span> with a <span class="crate-percent rare">0.63%</span> chance.</p>
-            <p class="crate-intro reveal"><span class="crate-name">Nether Crate</span>. The <span class="crate-name">Nether crate</span> is a special crate filled with fiery rewards from the Nether.</p>
-            <div class="crate-visual reveal"><img src="NetherCrate.jpeg" alt="Nether Crate preview" /><span class="crate-visual-caption">Stats of the Nether Crate</span></div>
-            <ul class="crate-rates reveal">
-              <li><span class="crate-item">Fire Charge</span> <span class="crate-percent">19%</span> chance</li>
-              <li><span class="crate-item">Netherrack</span> x5 <span class="crate-percent">18%</span> chance</li>
-              <li><span class="crate-item">Nether Bricks</span> x5 <span class="crate-percent">16%</span> chance</li>
-              <li><span class="crate-item">Obsidian</span> <span class="crate-percent">12%</span> chance</li>
-              <li><span class="crate-item">Magma Cream</span> <span class="crate-percent">11%</span> chance</li>
-              <li><span class="crate-item">Blaze Rod</span> <span class="crate-percent">10%</span> chance</li>
-              <li><span class="crate-item rare">Nether Helmet</span> <span class="crate-percent">2%</span> chance</li>
-              <li><span class="crate-item epic">Nether Chestplate</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item epic">Nether Leggings</span> <span class="crate-percent">1%</span> chance</li>
-              <li><span class="crate-item rare">Nether Boots</span> <span class="crate-percent">2%</span> chance</li>
-              <li><span class="crate-item legendary">Piglin Spawner</span> <span class="crate-percent rare">0.44%</span> chance</li>
-            </ul>
-          </div>
+          <div class="crate-list"><p>Crate rewards and previews are available here.</p></div>
         </section>
 
         <section id="tutorials-menu" class="tab-panel info-card tutorial-menu reveal">
           <h2>Tutorials</h2>
           <div class="tutorial-grid">
-            <article class="tutorial-card reveal">
-              <h3>Getting Started on IslandSMP</h3>
-              <div class="video-wrap">
-                <iframe src="https://www.youtube.com/embed/4ZUzLFe8w4o?rel=0" title="Getting Started on IslandSMP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-              </div>
-            </article>
+            <article class="tutorial-card reveal"><h3>Getting Started on IslandSMP</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed/4ZUzLFe8w4o?rel=0" title="Getting Started on IslandSMP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
           </div>
         </section>
 
@@ -258,14 +237,23 @@
           <h2>News</h2>
           <article class="news-update news-update-latest reveal">
             <span class="news-latest-badge">Latest Update</span>
+            <h3>Update 1.21: Spawner and /tpahere Update</h3>
+            <p class="news-date"><time datetime="2026-11-22">November 22, 2026</time></p>
+            <ul class="news-features">
+              <li>Updated Piglin Spawner</li>
+              <li>Piglin Spawner added to the shop</li>
+              <li>Creeper Spawner added</li>
+              <li>Bug fixes</li>
+              <li>Added the <strong>/tpahere</strong> command</li>
+              <li>Added Spawn Reset</li>
+              <li>Piglin Spawner now has a <strong>Piglin Head</strong> drop with a <strong>0.1%</strong> chance</li>
+            </ul>
+          </article>
+
+          <article class="news-update reveal">
             <h3>Update 1.20</h3>
             <p class="news-date"><time datetime="2026-11-03">November 3, 2026</time></p>
-            <ul class="news-features">
-              <li>Updated Tablist</li>
-              <li>Bug fixes</li>
-              <li>Website player head support for Bedrock and Java</li>
-              <li>Tablist player head support for Bedrock and Java</li>
-            </ul>
+            <ul class="news-features"><li>Updated Tablist</li><li>Bug fixes</li><li>Website player head support for Bedrock and Java</li><li>Tablist player head support for Bedrock and Java</li></ul>
           </article>
 
           <article class="news-update reveal">
@@ -273,33 +261,21 @@
             <p class="news-date"><time datetime="2026-10-29">October 29, 2026</time></p>
             <p><strong>NetherCrate Release:</strong> The new <span class="crate-name">NetherCrate</span> has arrived.</p>
             <p><strong>Piglin Spawner Release:</strong> A brand new <span class="crate-name">Piglin Spawner</span> is now live.</p>
-            <div class="crate-visual reveal">
-              <img src="NetherCrate.jpeg" alt="Nether Crate news image" />
-              <span class="crate-visual-caption">NetherCrate Release</span>
-            </div>
+            <div class="crate-visual reveal"><img src="NetherCrate.jpeg" alt="Nether Crate news image" /><span class="crate-visual-caption">NetherCrate Release</span></div>
           </article>
         </section>
 
         <section id="appeal-menu" class="tab-panel info-card appeal-menu reveal">
           <span class="appeal-eyebrow">Need a second chance?</span>
           <h2>Submit an Appeal</h2>
-          <p class="appeal-description">Think a server decision needs another look? Send our team an appeal and we’ll review it as soon as we can.</p>
+          <p class="appeal-description">Think a server decision needs another look? Send our team an appeal and we'll review it as soon as we can.</p>
           <p class="appeal-note">Please share the details honestly and respectfully so we can help.</p>
-          <div class="appeal-actions">
-            <a class="appeal-action" href="https://forms.gle/5SbzxefUqU6TPzy36" target="_blank" rel="noopener noreferrer">Submit an Appeal <span aria-hidden="true">↗</span></a>
-            <a class="appeal-action" href="https://forms.gle/bSvvWPpjdyHGsxaE8" target="_blank" rel="noopener noreferrer">Report a Player <span aria-hidden="true">↗</span></a>
-          </div>
+          <div class="appeal-actions"><a class="appeal-action" href="https://forms.gle/5SbzxefUqU6TPzy36" target="_blank" rel="noopener noreferrer">Submit an Appeal <span aria-hidden="true">↗</span></a><a class="appeal-action" href="https://forms.gle/bSvvWPpjdyHGsxaE8" target="_blank" rel="noopener noreferrer">Report a Player <span aria-hidden="true">↗</span></a></div>
         </section>
       </main>
     </div>
 
-    <div id="player-popup" class="player-popup" aria-live="polite">
-      <div class="player-popup-card">
-        <img id="player-popup-avatar" src="Steve.jpeg" alt="Online player avatar" />
-        <span id="player-popup-name">TheWardenEd</span>
-      </div>
-    </div>
-
+    <div id="player-popup" class="player-popup" aria-live="polite"><div class="player-popup-card"><img id="player-popup-avatar" src="Steve.jpeg" alt="Online player avatar" /><span id="player-popup-name">TheWardenEd</span></div></div>
     <script src="script.js"></script>
   </body>
 </html>
